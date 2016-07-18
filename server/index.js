@@ -1,41 +1,29 @@
-var express = require('express');
-var Item = require('models').Item;
+var express = require('express'),
+    mongoose = require('mongoose');
+
+var db = mongoose.connect('mongodb://connectionTo/MONGODB/goes/here');
 var app = express();
-var itemRoute = express.Router();
 
-itemRoute.param('itemId', function(req, res, next, id) {
-  Item.findById(req.params.itemId, function(err, item) {
-    req.item = item;
-    next();
+var port = process.env.PORT || 3000;
+
+var router = express.Router();
+
+router.route('/login')
+  .get(function(req, res) {
+    var response = {
+      hello: "login failure :)"
+    };
+    res.json(response);
   });
+
+app.use('/api', router);
+
+
+
+app.get('/', function(req, res) {
+  res.send('welcome to API!');
 });
 
-// Create new Items
-itemRoute.post('/', function(req, res, next) {
-  var item = new Item(req.body);
-  item.save(function(err, item) {
-    res.json(item);
-  });
+app.listen(port, function() {
+  console.log('running on PORT: ' + port);
 });
-
-itemRoute.route('/:itemId')
-  // Get Item by Id
-  .get(function(req, res, next) {
-    res.json(req.item);
-  })
-  // Update an Item with a given Id
-  .put(function(req, res, next) {
-    req.item.set(req.body);
-    req.item.save(function(err, item) {
-      res.json(item);
-    });
-  })
-  // Delete and Item by Id
-  .delete(function(req, res, next) {
-    req.item.remove(function(err) {
-      res.json({});
-    });
-  });
-
-app.use('/api/items', itemRoute);
-app.listen(8080);
