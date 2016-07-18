@@ -1,0 +1,27 @@
+{
+  "name": "houserentalserver",
+  "version": "1.0.0",
+  "description": "server of houserental app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karolyreka/HouseRental.git"
+  },
+  "keywords": [
+    "house",
+    "rental",
+    "test"
+  ],
+  "author": "Accenture team",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karolyreka/HouseRental/issues"
+  },
+  "homepage": "https://github.com/karolyreka/HouseRental#readme",
+  "devDependencies": {
+    "express": "^4.14.0"
+  }
+}
