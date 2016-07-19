@@ -31,20 +31,60 @@ var routes = function(User) {
       });
     });
 
+  userRouter.use('/:userid', function(req, res, next) {
+    User.findById(req.paras.userid, function(err, user) {
+      if (err) {
+        res.status(500).send(err);
+        //console.log(err);
+      } else if (user) {
+        req.user = user;
+        next();
+      } else {
+        res.status(404).send('no user found');
+      }
+    });
+  });
+
   userRouter.route('/:userid')
     .get(function(req, res) {
-
-      User.find(req.paras.userid, function(err, user) {
-        if (err) {
+      res.json(req.user);
+    })
+    .put(function(req, res) {
+      req.user.username = req.body.username;
+      req.user.firstName = req.body.firstName;
+      req.user.lastName = req.body.lastName;
+      req.user.password = req.body.password;
+      req.user.save(function(err) {
+        if (err)
           res.status(500).send(err);
-          //console.log(err);
-        } else {
-          res.json(user);
-        }
+        else
+          res.json(req.user);
+      });
+      res.json(req.user);
+    })
+    .patch(function(req, res) {
+      if (req.user._id)
+        delete req.body._id
+      for (var p in req.body) {
+        req.user[p] = req.body[p];
+      }
+      req.user.save(function(err) {
+        if (err)
+          res.status(500).send(err);
+        else
+          res.json(req.user);
+      })
+      .delete(function(req,res){
+        req.user.remove(function(err) {
+          if (err)
+            res.status(500).send(err);
+          else
+            res.status(204).send('removed');
+        });
       });
     });
 
-    return userRouter;
+  return userRouter;
 };
 
 module.exports = routes;

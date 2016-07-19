@@ -17,10 +17,7 @@ app.use(bodyParser.json());
 
 userRouter = require('./Routes/userRouter')(User);
 
-
 app.use('/api/getUsers', userRouter);
-
-
 
 app.get('/', function(req, res) {
   res.send('welcome to API!');
