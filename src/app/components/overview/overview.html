@@ -1,0 +1,12 @@
+<div class="row">
+ <div class="col-sm-6 col-md-4" ng-repeat="apartment in vm.apartments">
+   <div class="card">
+     <img class="card-img-top" ng-src="{{ apartment.image }}" alt="{{ apartment.name }}">
+     <div class="card card-block">
+       <h4 class="card-title">{{ apartment.name }}</h4>
+       <p class="card-text">{{ apartment.description }}</p>
+     </div>
+   </div>
+ </div>
+</div>
+
