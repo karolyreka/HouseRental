@@ -21,7 +21,9 @@
     function OverviewController(apartment) {
       var vm = this;
 
-      vm.apartments = apartment.getApartments();
+      apartment.getApartments().then(function (data) {
+        vm.apartments = data;
+      });
     }
   }
 
