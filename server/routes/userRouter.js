@@ -11,25 +11,10 @@ var routes = function(User) {
       res.json(response);
     });
 
-
+var userInfoController = require('../controllers/userInfoController')(User);
   userRouter.route('/')
-    .post(function(req, res) {
-      var user = new User(req.body);
-      user.save();
-      console.log(user);
-      res.status(201).send(user);
-    })
-    .get(function(req, res) {
-      var jsonFilter = req.query;
-      User.find(jsonFilter, function(err, user) {
-        if (err) {
-          res.status(500).send(err);
-          //console.log(err);
-        } else {
-          res.json(user);
-        }
-      });
-    });
+    .post(userInfoController.post)
+    .get(userInfoController.get);
 
   userRouter.use('/:userid', function(req, res, next) {
     User.findById(req.paras.userid, function(err, user) {

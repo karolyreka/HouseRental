@@ -27,9 +27,12 @@
   "dependencies": {
     "body-parser": "^1.15.2",
     "gulp": "^3.9.1",
+    "gulp-mocha": "^2.2.0",
     "gulp-nodemon": "^2.1.0",
     "mongodb": "^2.2.4",
     "mongoose": "^4.5.5",
+    "should": "^10.0.0",
+    "sinon": "^1.17.4",
     "util": "^0.10.3"
   }
 }
