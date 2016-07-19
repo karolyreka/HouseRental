@@ -1,22 +1,24 @@
 var express = require('express'),
-    mongoose = require('mongoose');
+  mongoose = require('mongoose'),
+  bodyParser = require('body-parser');
 
 var db = mongoose.connect('mongodb://connectionTo/MONGODB/goes/here');
+
+var User = require('./models/userModel');
+
 var app = express();
 
 var port = process.env.PORT || 3000;
 
-var router = express.Router();
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.user(bodyParser.json());
 
-router.route('/login')
-  .get(function(req, res) {
-    var response = {
-      hello: "login failure :)"
-    };
-    res.json(response);
-  });
+userRouter = require('./Routes/userRouter')(User);
 
-app.use('/api', router);
+
+app.use('/api/getUsers', userRouter);
 
 
 
