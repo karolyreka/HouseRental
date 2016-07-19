@@ -1,0 +1,5 @@
+{
+    "url": "mongodb://%s:%s@ds023495.mlab.com:23495/houserental",
+    "username": "houserental",
+    "password": "houserental123"
+}

@@ -28,6 +28,8 @@
     "body-parser": "^1.15.2",
     "gulp": "^3.9.1",
     "gulp-nodemon": "^2.1.0",
-    "mongoose": "^4.5.5"
+    "mongodb": "^2.2.4",
+    "mongoose": "^4.5.5",
+    "util": "^0.10.3"
   }
 }
