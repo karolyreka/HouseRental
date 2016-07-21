@@ -1,12 +1,21 @@
 <div class="row">
- <div class="col-sm-6 col-md-4" ng-repeat="apartment in vm.apartments">
-   <div class="card">
-     <img class="card-img-top" ng-src="{{ apartment.image }}" alt="{{ apartment.name }}">
-     <div class="card card-block">
-       <h4 class="card-title">{{ apartment.name }}</h4>
-       <p class="card-text">{{ apartment.description }}</p>
-     </div>
+ <div class="col-lg-3 col-sm-6" ng-repeat="apartment in vm.apartments">
+   <div class="card hovercard">
+      <div class="cardheader">
+         {{ apartment.name }}
+      </div>
+      <div class="avatar">
+         <img ng-src="{{ apartment.image }}" alt="{{ apartment.name }}">
+      </div>
+      <div class="info">
+            <div class="title">
+               {{ apartment.description }}
+            </div>
+      </div>
+      <div class="bottom">
+         <div class="col-md-4">54 mp</div>
+         <div class="col-md-4">2 Camere</div>              
+      </div>
    </div>
  </div>
 </div>
-
