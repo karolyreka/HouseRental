@@ -2,7 +2,9 @@ var express = require('express'),
   mongoose = require('mongoose'),
   bodyParser = require('body-parser');
 
-//var db = mongoose.connect('mongodb://connectionTo/MONGODB/goes/here');
+// var db = mongoose.connect('mongodb://houserental:houserental123@ds023495.mlab.com:23495/houserental', function (err, db) {
+// 	console.log(err);
+// });
 
 var User = require('./models/userModel');
 
