@@ -21,9 +21,9 @@
     return directive;
 
     /** @ngInject */
-    function NavbarController(moment) {
+    function NavbarController(moment, authToken) {
       var vm = this;
-
+      vm.isAuthenticated = authToken.isAuthenticated();
       // "vm.creationDate" is available by directive option "bindToController: true"
       vm.relativeDate = moment(vm.creationDate).fromNow();
     }
