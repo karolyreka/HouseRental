@@ -77,9 +77,16 @@ app.post('/register', function(req, res) {
     email: user.email,
     password: user.password
   });
-  newUser.save(function(err) {
-    createSendToken(newUser, res);
-})
+    /**
+    * save method doesn't exist on userModel
+    * for now calling direct createSendToken function
+    *
+  newUser.save(function (err) {
+      createSendToken(newUser, res);
+  });
+  */
+  createSendToken(newUser, res);
+
 });
 
 function createSendToken(user, res) {
@@ -87,6 +94,7 @@ function createSendToken(user, res) {
     sub: user.id
   }
   var token = jwt.encode(payload, "shh...");
+  console.log(user);
   res.status(200).send({
     user: user.toJSON(),
     token: token

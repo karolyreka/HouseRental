@@ -5,8 +5,13 @@ angular.module('houseRental')
   /** @ngInject */
 
   function RegisterController($scope, alert, auth) {
-    var vm = this;
-    vm.submit = function() {
+      var vm = this;
+
+      vm.passwordConfirmCheck = function () {
+          console.log("ng-change");
+      };
+    vm.submit = function () {
+    
     auth.register($scope.email, $scope.password)
       .success(function(res){
         alert('sucess', 'Account created!', 'Welcome, ' + res.user.email +'!');
