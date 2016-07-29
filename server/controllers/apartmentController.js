@@ -74,7 +74,6 @@ var apartmentController = function() {
     }
     results = results.substr(0, results.length - 1);
     results += "]";
-
     res.setHeader('Content-Type', 'application/json');
     res.send(results);
     res.end();

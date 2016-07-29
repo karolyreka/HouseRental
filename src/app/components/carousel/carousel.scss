@@ -1,0 +1,19 @@
+﻿.carousel{
+    background: #2f4357;
+    margin-top: 20px;
+    text-align: center;
+    vertical-align: central;
+}
+
+.carousel .item img{
+    margin: 0 auto; /* Align slide image horizontally center */
+}
+
+.carousel-caption {
+    right: 58%;
+    text-align: center;
+    left: auto;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: initial;
+}

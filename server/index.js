@@ -42,8 +42,11 @@ app.use(function(req, res, next) {
 userRouter = require('./Routes/userRouter')(User);
 
 var apartmentRouter = require('./Routes/apartmentRouter')();
+var partnerRouter = require('./Routes/partnerRouter')();
 
 app.use('/api/apartment', apartmentRouter);
+
+app.use('/api/partner', partnerRouter);
 
 app.use('/api/getUsers', userRouter);
 
