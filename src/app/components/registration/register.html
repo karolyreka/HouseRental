@@ -6,10 +6,10 @@
 
   <form ng-controller="RegisterController as vm" ng-submit="vm.submit()" name="register" class="form-signin">
     <h1 class="form-signin-heading text-muted">Register</h1>
-    <input type="email" class="form-control" placeholder="Email address" required>
+    <input type="email" class="form-control" ng-model="email" placeholder="Email address" required>
     <input name="password" type="password" ng-model="password" class="form-control" placeholder="Password" required>
-    <input name="Confirm Password" ng-model="password_confirm" type="password" class="form-control" placeholder="Confirm Password">
-    <p class="help-block" ng-show="register.password_confirm.$dirty">please match the password</p>
+    <input name="password_confirm" ng-model="password_confirm" type="password" class="form-control" placeholder="Confirm Password" validationEquals required>
+    <p class="help-block" ng-show="password !== password_confirm">please match the password</p>
     <button ng-disabled = "register.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">
       Submit
     </button>

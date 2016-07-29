@@ -17,7 +17,7 @@ function auth($http, authToken, $state) {
       password: password
     }).success(authSucessfull);
   }
-  this.register = function(email, password) {
+  this.register = function (email, password) {
     return $http.post("http://localhost:9010/register", {
       email: email,
       password: password
